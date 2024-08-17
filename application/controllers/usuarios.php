@@ -39,6 +39,7 @@ class Usuarios extends CI_Controller {
 				$this->session->set_userdata('idAdmin',$row->idAdmin);
 				$this->session->set_userdata('login',$row->login);
 				$this->session->set_userdata('tipo',$row->tipo);
+				$this->session->set_userdata('activo',$row->activo);
 
 				redirect('usuarios/panel','refresh');
 			}

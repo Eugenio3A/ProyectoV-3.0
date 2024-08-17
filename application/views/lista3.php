@@ -97,7 +97,7 @@
         <p><?php echo date('Y/m/d H:i:s'); ?></p>
 
         <a href="<?php echo base_url(); ?>index.php/administrador/deshabilitados">
-            <button type="button" class="btn btn-warning">CONDUCTOR NO FUNCIONALES</button>
+            <button type="button" class="btn btn-warning">ADMINISTRADOR NO FUNCIONALES</button>
         </a>
 
         <a href="<?php echo base_url(); ?>index.php/administrador/agregar">
