@@ -100,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <td><?php echo $contador; ?></td>
             <td><?php echo $row->login; ?></td>
             <td><?php echo $row->codigo; ?></td>
-            <td><?php echo $row->tipo; ?></td>
+            <td><?php echo $row->cargo; ?></td>
 		</tr>
 		<?php
 		$contador++;

@@ -39,7 +39,7 @@ CREATE TABLE `administrador` (
   KEY `id_usuario` (`id_usuario`),
   KEY `idx_administrador_login` (`login`),
   CONSTRAINT `administrador_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,6 +48,7 @@ CREATE TABLE `administrador` (
 
 LOCK TABLES `administrador` WRITE;
 /*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
+INSERT INTO `administrador` VALUES (1,'','','','','juan','f5737d25829e95b9c234b7fa06af8736','administrador',1,'2024-08-18 02:15:59',NULL,NULL),(2,'','','','','mario','aeb34368c5d53aee32431b5386f71c56','administrador',1,'2024-08-18 02:16:12',NULL,NULL),(3,'','','','','daniel','b5ea8985533defbf1d08d5ed2ac8fe9b','administrador',1,'2024-08-18 02:16:28',NULL,NULL);
 /*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,9 +68,9 @@ CREATE TABLE `conductores` (
   `telefono` varchar(20) DEFAULT NULL,
   `domicilio` varchar(255) DEFAULT NULL,
   `antecedentes` text,
+  `disponible` tinyint(1) DEFAULT '1',
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
-  `disponible` tinyint(1) DEFAULT '1',
   `idUsuario` smallint NOT NULL,
   `id_vehiculo` smallint DEFAULT NULL,
   PRIMARY KEY (`id_conductor`),
@@ -77,7 +78,7 @@ CREATE TABLE `conductores` (
   UNIQUE KEY `id_vehiculo` (`id_vehiculo`),
   KEY `idx_conductores_licencia` (`licencia`),
   CONSTRAINT `conductores_ibfk_1` FOREIGN KEY (`id_vehiculo`) REFERENCES `vehiculos` (`id_vehiculo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,6 +87,7 @@ CREATE TABLE `conductores` (
 
 LOCK TABLES `conductores` WRITE;
 /*!40000 ALTER TABLE `conductores` DISABLE KEYS */;
+INSERT INTO `conductores` VALUES (1,'PEDRO','MAMANI','JUAREZ','4526852','63582459','av. Melchor Urquide 1234 ','sin antesedentes',1,'2024-08-18 02:12:47',NULL,0,NULL),(2,'NOEL','BALDES','JUAREZ','12546332','65862237','call. merida 1220','sin antesedentes',1,'2024-08-18 02:13:43',NULL,0,NULL),(5,'PEDRO','MARTINES','DORADO','4511111','75846921','av.blanco galindo Km7','sin antesedentes',1,'2024-08-18 02:15:28',NULL,0,NULL);
 /*!40000 ALTER TABLE `conductores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,9 +164,9 @@ CREATE TABLE `propietarios` (
   `segundoApellido` varchar(100) NOT NULL,
   `telefono` varchar(20) DEFAULT NULL,
   `domicilio` varchar(255) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `estado` tinyint(1) DEFAULT '1',
   `idUsuario` smallint NOT NULL,
   PRIMARY KEY (`id_propietario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -190,10 +192,10 @@ CREATE TABLE `publicidad` (
   `id_publicidad` int NOT NULL AUTO_INCREMENT,
   `descripcion` text NOT NULL,
   `tipo` enum('banner','popup','video') NOT NULL,
+  `activo` tinyint(1) DEFAULT '1',
   `fecha_inicio` timestamp NOT NULL,
   `fecha_fin` timestamp NOT NULL,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT '1',
   `idUsuario` smallint NOT NULL,
   PRIMARY KEY (`id_publicidad`),
   KEY `idx_publicidad_fecha_inicio` (`fecha_inicio`)
@@ -220,9 +222,9 @@ CREATE TABLE `puestosparqueo` (
   `idPuesto` smallint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL DEFAULT '',
   `descripcion` varchar(250) NOT NULL,
+  `estado` tinyint(1) DEFAULT '0',
   `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT '0',
   `idUsuario` smallint NOT NULL,
   PRIMARY KEY (`idPuesto`),
   KEY `idx_puestosParqueo_nombre` (`nombre`)
@@ -353,7 +355,7 @@ CREATE TABLE `usuarios` (
   KEY `id_rol` (`id_rol`),
   KEY `idx_usuarios_telefono` (`telefono`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -362,6 +364,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'MARIO','MMANI','6586223','CALL.AMIRAYA Y HEROINAS',1,NULL,'2024-08-18 02:17:23',NULL,0),(2,'DANIEL','MORALES','65862220','CALL.AMIRAYA Y HEROINAS',1,NULL,'2024-08-18 02:17:49',NULL,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,9 +382,9 @@ CREATE TABLE `vehiculos` (
   `marca` varchar(100) NOT NULL,
   `placa` varchar(20) NOT NULL,
   `tipo` enum('taxi','vagoneta','taxi_familiar','mudanza') NOT NULL,
+  `estado` tinyint(1) DEFAULT '0',
   `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT '0',
   `idUsuario` smallint NOT NULL,
   `idPuesto` smallint DEFAULT NULL,
   `id_propietario` smallint DEFAULT NULL,
@@ -413,4 +416,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-17 20:51:20
+-- Dump completed on 2024-08-17 22:30:03

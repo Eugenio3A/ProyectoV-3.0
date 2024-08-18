@@ -16,7 +16,7 @@ echo form_open_multipart("conductor/modificarbd");
 <input type="text" class="form-control" name="segundoApellido" placeholder="Escribe segundo Apellido" minlength="3" maxlength="20" value="<?php echo $row->segundoApellido; ?>" required>
 <input type="text" class="form-control" name="licencia" placeholder="Escribe numero de licencia" value="<?php echo $row->licencia; ?>" required>
 <input type="number" min="1000000" max="99999999" class="form-control" name="telefono" placeholder="Escribe telefono" value="<?php echo $row->telefono; ?>" required>
-<input type="text" class="form-control" name="direccion" placeholder="Escribe direccion" value="<?php echo $row->direccion; ?>" required>
+<input type="text" class="form-control" name="domicilio" placeholder="Escribe direccion" value="<?php echo $row->domicilio; ?>" required>
 <input type="text" class="form-control" name="antecedentes" placeholder="Escribe antecedentes" value="<?php echo $row->antecedentes;?>" required>
 <button type="submit" class="btn btn-success">Agregar Conductor</button>
 <?php

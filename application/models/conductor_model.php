@@ -7,7 +7,7 @@ class Conductor_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('Conductores');
-		$this->db->where('disponibilidad','1');
+		$this->db->where('disponible','1');
 		return $this->db->get(); //devuelve el resultado
 	}
 
@@ -15,7 +15,7 @@ class Conductor_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('Conductores');
-		$this->db->where('disponibilidad','0');
+		$this->db->where('disponible','0');
 		return $this->db->get(); //devuelve el resultado
 	}
 

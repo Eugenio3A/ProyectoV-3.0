@@ -62,7 +62,7 @@ class Administrador extends CI_Controller {
     {
         $data['login'] = ($_POST['login']);
         $data['codigo']=md5($_POST['codigo']);
-        $data['tipo'] = ($_POST['tipo']);
+        $data['cargo'] = ($_POST['cargo']);
         $this->admin_model->agregarconductores($data);
         redirect('administrador/curso', 'refresh');
     }
@@ -92,7 +92,7 @@ class Administrador extends CI_Controller {
         $idAdmin = $_POST['idAdmin'];
         $data['login'] = strtoupper($_POST['login']);
         $data['codigo'] = strtoupper($_POST['codigo']);
-        $data['tipo'] = strtoupper($_POST['tipo']);
+        $data['cargo'] = strtoupper($_POST['cargo']);
 
         $this->admin_model->modificarconductores($idAdmin, $data);
         redirect('administrador/curso', 'refresh');

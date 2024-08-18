@@ -110,7 +110,7 @@
                     <th>No.</th>
                     <th>login</th>
                     <th>codigo</th>
-                    <th>tipo</th>
+                    <th>cargo</th>
                     <th>Creado</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
@@ -126,7 +126,7 @@
                     <td><?php echo $contador; ?></td>
                     <td><?php echo $row->login; ?></td>
                     <td><?php echo $row->codigo; ?></td>
-                    <td><?php echo $row->tipo; ?></td>
+                    <td><?php echo $row->cargo; ?></td>
                     <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                     <td>
                         <?php echo form_open_multipart("administrador/modificar"); ?>

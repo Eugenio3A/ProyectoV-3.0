@@ -65,7 +65,7 @@ class Conductor extends CI_Controller {
         $data['segundoApellido'] = strtoupper($_POST['segundoApellido']);
         $data['licencia'] = $_POST['licencia'];
         $data['telefono'] = $_POST['telefono'];
-        $data['direccion'] = $_POST['direccion'];
+        $data['domicilio'] = $_POST['domicilio'];
         $data['antecedentes'] = $_POST['antecedentes'];
 
         $this->conductor_model->agregarconductores($data);
@@ -99,7 +99,7 @@ class Conductor extends CI_Controller {
         $data['segundoApellido'] = strtoupper($_POST['segundoApellido']);
         $data['licencia'] = $_POST['licencia'];
         $data['telefono'] = $_POST['telefono'];
-        $data['direccion'] = $_POST['direccion'];
+        $data['domicilio'] = $_POST['domicilio'];
         $data['antecedentes'] = $_POST['antecedentes'];
 
         $this->conductor_model->modificarconductores($id_conductor, $data);
@@ -109,7 +109,7 @@ class Conductor extends CI_Controller {
     public function deshabilitarbd()
     {
         $id_conductor = $_POST['id_conductor'];
-        $data['disponibilidad'] = '0';
+        $data['disponible'] = '0';
 
         $this->conductor_model->modificarconductores($id_conductor, $data);
         redirect('conductor/curso', 'refresh');
@@ -118,7 +118,7 @@ class Conductor extends CI_Controller {
     public function habilitarbd()
     {
         $id_conductor = $_POST['id_conductor'];
-        $data['disponibilidad'] = '1';
+        $data['disponible'] = '1';
 
         $this->conductor_model->modificarconductores($id_conductor, $data);
         redirect('conductor/deshabilitados', 'refresh');

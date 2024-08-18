@@ -26,7 +26,7 @@
             <td><?php echo $contador; ?></td>
             <td><?php echo $row->login; ?></td>
             <td><?php echo $row->codigo; ?></td>
-            <td><?php echo $row->tipo; ?></td>
+            <td><?php echo $row->cargo; ?></td>
             <td>
 <?php
 echo form_open_multipart("administrador/habilitarbd");

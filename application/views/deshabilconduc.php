@@ -15,7 +15,7 @@
         <th>segundoApellido</th>
         <th>licencia</th>
         <th>Teléfono</th>
-        <th>direccion</th>
+        <th>domicilio</th>
         <th>antecedentes</th>
 	</thead>
 	<tbody>
@@ -31,7 +31,7 @@
             <td><?php echo $row->segundoApellido; ?></td>
             <td><?php echo $row->licencia; ?></td>
             <td><?php echo $row->telefono; ?></td>
-            <td><?php echo $row->direccion; ?></td>
+            <td><?php echo $row->domicilio; ?></td>
             <td><?php echo $row->antecedentes; ?></td>
             <td>
 <?php
