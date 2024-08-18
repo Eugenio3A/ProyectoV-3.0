@@ -24,9 +24,13 @@ DROP TABLE IF EXISTS `administrador`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `administrador` (
   `idAdmin` int NOT NULL AUTO_INCREMENT,
+  `ciNit` varchar(255) NOT NULL DEFAULT '',
+  `nombre` varchar(100) NOT NULL,
+  `primerApellido` varchar(100) NOT NULL,
+  `segundoApellido` varchar(100) NOT NULL,
   `login` varchar(255) NOT NULL DEFAULT '',
   `codigo` varchar(255) NOT NULL DEFAULT '',
-  `tipo` varchar(255) NOT NULL DEFAULT '',
+  `cargo` varchar(255) NOT NULL DEFAULT '',
   `activo` tinyint(1) DEFAULT '1',
   `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
@@ -61,16 +65,19 @@ CREATE TABLE `conductores` (
   `segundoApellido` varchar(100) NOT NULL,
   `licencia` varchar(50) NOT NULL,
   `telefono` varchar(20) DEFAULT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
+  `domicilio` varchar(255) DEFAULT NULL,
   `antecedentes` text,
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `fechaActualizacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `disponibilidad` tinyint(1) DEFAULT '1',
+  `fechaActualizacion` timestamp NULL DEFAULT NULL,
+  `disponible` tinyint(1) DEFAULT '1',
   `idUsuario` smallint NOT NULL,
+  `id_vehiculo` smallint DEFAULT NULL,
   PRIMARY KEY (`id_conductor`),
   UNIQUE KEY `licencia` (`licencia`),
-  KEY `idx_conductores_licencia` (`licencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `id_vehiculo` (`id_vehiculo`),
+  KEY `idx_conductores_licencia` (`licencia`),
+  CONSTRAINT `conductores_ibfk_1` FOREIGN KEY (`id_vehiculo`) REFERENCES `vehiculos` (`id_vehiculo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +86,6 @@ CREATE TABLE `conductores` (
 
 LOCK TABLES `conductores` WRITE;
 /*!40000 ALTER TABLE `conductores` DISABLE KEYS */;
-INSERT INTO `conductores` VALUES (1,'DANIEL','MARTINES','MENDES','24153233','6586223','call. la paz y av. Ayacucho','sin antesedentes','2024-08-12 04:01:06','2024-08-12 04:01:06',1,0),(4,'PEDRO','BALDES','MENDES','241535','65865656','call.Jordan y call. 25 de Mayo','sin antesedentes','2024-08-12 04:02:45','2024-08-12 04:02:45',1,0),(5,'JUAN','MONTAñO','DORADO','4154654','4698562','call.Jordan y call. 25 de Mayo','sin antesedentes','2024-08-12 04:03:55','2024-08-12 04:03:55',1,0),(6,'PEDRO','MARTINES','MENDES','4568651','62568465','av.Blanco galindo ','sin antesedentes','2024-08-12 05:38:35','2024-08-12 05:38:35',1,0);
 /*!40000 ALTER TABLE `conductores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,12 +124,13 @@ DROP TABLE IF EXISTS `pagos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pagos` (
   `id_pago` int NOT NULL AUTO_INCREMENT,
-  `id_reserva` smallint DEFAULT NULL,
   `monto` decimal(10,2) NOT NULL,
   `metodo` enum('transferencia_QR','tigo_money','tarjeta_debito') DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
   `fecha_pago` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
   `idUsuario` smallint NOT NULL,
+  `id_reserva` smallint DEFAULT NULL,
   PRIMARY KEY (`id_pago`),
   KEY `id_reserva` (`id_reserva`),
   KEY `idx_pagos_fecha_pago` (`fecha_pago`),
@@ -149,13 +156,16 @@ DROP TABLE IF EXISTS `propietarios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `propietarios` (
   `id_propietario` smallint NOT NULL AUTO_INCREMENT,
+  `ciNit` varchar(255) NOT NULL DEFAULT '',
   `nombre` varchar(100) NOT NULL,
-  `apellidos` varchar(150) NOT NULL,
+  `primerApellido` varchar(100) NOT NULL,
+  `segundoApellido` varchar(100) NOT NULL,
   `telefono` varchar(20) DEFAULT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
+  `domicilio` varchar(255) DEFAULT NULL,
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` tinyint(1) DEFAULT '1',
+  `idUsuario` smallint NOT NULL,
   PRIMARY KEY (`id_propietario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -200,6 +210,35 @@ LOCK TABLES `publicidad` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `puestosparqueo`
+--
+
+DROP TABLE IF EXISTS `puestosparqueo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `puestosparqueo` (
+  `idPuesto` smallint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL DEFAULT '',
+  `descripcion` varchar(250) NOT NULL,
+  `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `fechaActualizacion` timestamp NULL DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '0',
+  `idUsuario` smallint NOT NULL,
+  PRIMARY KEY (`idPuesto`),
+  KEY `idx_puestosParqueo_nombre` (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `puestosparqueo`
+--
+
+LOCK TABLES `puestosparqueo` WRITE;
+/*!40000 ALTER TABLE `puestosparqueo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `puestosparqueo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `reclamos`
 --
 
@@ -208,12 +247,12 @@ DROP TABLE IF EXISTS `reclamos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reclamos` (
   `id_reclamo` smallint NOT NULL AUTO_INCREMENT,
-  `id_usuario` smallint DEFAULT NULL,
   `descripcion` text NOT NULL,
   `estado` enum('pendiente','resuelto','cerrado') DEFAULT 'pendiente',
   `fechaReclamo` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NOT NULL,
   `idUsuario` smallint NOT NULL,
+  `id_usuario` smallint DEFAULT NULL,
   PRIMARY KEY (`id_reclamo`),
   KEY `id_usuario` (`id_usuario`),
   KEY `idx_reclamos_fechaReclamo` (`fechaReclamo`),
@@ -239,8 +278,6 @@ DROP TABLE IF EXISTS `reservas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reservas` (
   `id_reserva` smallint NOT NULL AUTO_INCREMENT,
-  `id_usuario` smallint DEFAULT NULL,
-  `id_vehiculo` smallint DEFAULT NULL,
   `fechaReserva` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaServicio` timestamp NOT NULL,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
@@ -249,6 +286,8 @@ CREATE TABLE `reservas` (
   `origen` varchar(255) NOT NULL,
   `destino` varchar(255) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
+  `id_usuario` smallint DEFAULT NULL,
+  `id_vehiculo` smallint DEFAULT NULL,
   PRIMARY KEY (`id_reserva`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_vehiculo` (`id_vehiculo`),
@@ -314,7 +353,7 @@ CREATE TABLE `usuarios` (
   KEY `id_rol` (`id_rol`),
   KEY `idx_usuarios_telefono` (`telefono`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +362,6 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'PEDRO','MMANI','6586223','CALL.JORDAN Y CALL. 25 DE MAYO',1,NULL,'2024-08-12 05:21:58',NULL,0),(2,'JUAN','MORALES','76956556','AV,BLANCOGALINDO KM7',1,NULL,'2024-08-12 05:22:40',NULL,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,21 +374,23 @@ DROP TABLE IF EXISTS `vehiculos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `vehiculos` (
   `id_vehiculo` smallint NOT NULL AUTO_INCREMENT,
+  `numMovil` varchar(255) NOT NULL DEFAULT '',
   `modelo` varchar(100) NOT NULL,
+  `marca` varchar(100) NOT NULL,
   `placa` varchar(20) NOT NULL,
   `tipo` enum('taxi','vagoneta','taxi_familiar','mudanza') NOT NULL,
-  `id_conductor` smallint DEFAULT NULL,
-  `id_propietario` smallint DEFAULT NULL,
   `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
-  `mantenimiento` tinyint(1) DEFAULT '0',
+  `estado` tinyint(1) DEFAULT '0',
   `idUsuario` smallint NOT NULL,
+  `idPuesto` smallint DEFAULT NULL,
+  `id_propietario` smallint DEFAULT NULL,
   PRIMARY KEY (`id_vehiculo`),
   UNIQUE KEY `placa` (`placa`),
-  KEY `id_conductor` (`id_conductor`),
+  KEY `idPuesto` (`idPuesto`),
   KEY `id_propietario` (`id_propietario`),
   KEY `idx_vehiculos_placa` (`placa`),
-  CONSTRAINT `vehiculos_ibfk_1` FOREIGN KEY (`id_conductor`) REFERENCES `conductores` (`id_conductor`),
+  CONSTRAINT `vehiculos_ibfk_1` FOREIGN KEY (`idPuesto`) REFERENCES `puestosparqueo` (`idPuesto`),
   CONSTRAINT `vehiculos_ibfk_2` FOREIGN KEY (`id_propietario`) REFERENCES `propietarios` (`id_propietario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -373,4 +413,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-12 17:37:00
+-- Dump completed on 2024-08-17 20:51:20
