@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<thead>
 		<th>No.</th>
 		<th>Nombre</th>
-		<th>APellidos</th>
+		<th>Familia</th>
 		<th>Direccion</th>
 		<th>Telefono</th>
 	</thead>
@@ -111,9 +111,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</tbody>
 </table>
 </div>
-
-
-
 
 	<h1>Welcome to CodeIgniter!!!</h1>
 	<h1>Ruta base:</h1>

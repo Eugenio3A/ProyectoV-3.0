@@ -27,6 +27,9 @@
           <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/administrador/curso">Insertar Administrador</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/veiculo/empresa">Insertar Veiculo</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/empresa/catalogo">Reportes</a>
         </li>
         <li class="nav-item">

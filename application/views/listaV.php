@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Conductores</title>
+    <title>Lista de Usuarios</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body {
@@ -84,11 +84,11 @@
 <body>
     <div class="header">
         <img src="" alt="Logo"> <!-- Ruta a tu imagen -->
-        <h1>LISTA DE ADMINISTRADOR</h1>
+        <h1>LISTA DE VEICULOS</h1>
     </div>
 
     <div class="container">
-        <a href="<?php echo base_url(); ?>index.php/usuarios/logout">
+        <a href="<?php echo base_url(); ?>index.php/gerenteprop/logout">
             <button type="button" class="btn btn-primary">Cerrar sesión</button>
         </a>
 
@@ -96,25 +96,23 @@
 
         <p><?php echo date('Y/m/d H:i:s'); ?></p>
 
-        <a href="<?php echo base_url(); ?>index.php/administrador/deshabilitados">
-            <button type="button" class="btn btn-warning">ADMINISTRADOR NO FUNCIONALES</button>
+        <a href="<?php echo base_url(); ?>index.php/veiculo/deshabilitados">
+            <button type="button" class="btn btn-warning">VEICULO NO FUNCIONALES</button>
         </a>
 
-        <a href="<?php echo base_url(); ?>index.php/administrador/agregar">
-            <button type="button" class="btn btn-primary">AGREGAR USUARIO</button>
+        <a href="<?php echo base_url(); ?>index.php/veiculo/agregar">
+            <button type="button" class="btn btn-primary">AGREGAR VEICULO</button>
         </a>
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>ciNit</th>
-                    <th>Nombre</th>
-                    <th>Primer Apellido</th>
-                    <th>Segundo Apellido</th>
-                    <th>Login</th>
-                    <th>Codigo</th>
-                    <th>Turno</th>
+                    <th>No.Movil</th>
+		            <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Placa</th>
+		            <th>Tipo</th>
                     <th>Creado</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
@@ -122,36 +120,33 @@
                 </tr>
             </thead>
             <tbody>
-
                 <?php
                 $contador = 1;
-                foreach ($alumnos->result() as $row){
+                foreach ($moviles->result() as $row) {
                 ?>
                 <tr>
                     <td><?php echo $contador; ?></td>
-                    <td><?php echo $row->ciNit; ?></td>
-                    <td><?php echo $row->nombre; ?></td>
-                    <td><?php echo $row->primerApellido; ?></td>
-                    <td><?php echo $row->segundoApellido; ?></td>
-                    <td><?php echo $row->login; ?></td>
-                    <td><?php echo $row->codigo; ?></td>
-                    <td><?php echo $row->cargo; ?></td>
+			        <td><?php echo $row->numMovil; ?></td>
+			        <td><?php echo $row->modelo; ?></td>
+			        <td><?php echo $row->marca; ?></td>
+			        <td><?php echo $row->placa; ?></td>
+                    <td><?php echo $row->tipo; ?></td>
                     <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                     <td>
-                        <?php echo form_open_multipart("administrador/modificar"); ?>
-                        <input type="hidden" name="idAdmin" value="<?php echo $row->idAdmin; ?>">
+                        <?php echo form_open_multipart("veiculo/modificar"); ?>
+                        <input type="hidden" name="id_vehiculo" value="<?php echo $row->id_vehiculo; ?>">
                         <button type="submit" class="btn btn-success">Modificar</button>
                         <?php echo form_close(); ?>
                     </td>
                     <td>
-                        <?php echo form_open_multipart("administrador/eliminarbd"); ?>
-                        <input type="hidden" name="idAdmin" value="<?php echo $row->idAdmin; ?>">
+                        <?php echo form_open_multipart("veiculo/eliminarbd"); ?>
+                        <input type="hidden" name="id_vehiculo" value="<?php echo $row->id_vehiculo; ?>">
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                         <?php echo form_close(); ?>
                     </td>
                     <td>
-                        <?php echo form_open_multipart("administrador/deshabilitarbd"); ?>
-                        <input type="hidden" name="idAdmin" value="<?php echo $row->idAdmin; ?>">
+                        <?php echo form_open_multipart("veiculo/deshabilitarbd"); ?>
+                        <input type="hidden" name="id_vehiculo" value="<?php echo $row->id_vehiculo; ?>">
                         <button type="submit" class="btn btn-warning">Deshabilitar</button>
                         <?php echo form_close(); ?>
                     </td>
@@ -165,4 +160,5 @@
     </div>
 </body>
 </html>
+
 

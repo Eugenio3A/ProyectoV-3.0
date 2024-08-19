@@ -10,10 +10,10 @@
 <table class="table">
 	<thead>
 		<th>No.</th>
-		<th>Nombre.</th>
-		<th>APellidos.</th>
-		<th>Direccion.</th>
-		<th>Tefono</th>
+		<th>Nombre</th>
+		<th>Familia</th>
+		<th>Direccion</th>
+		<th>Telefono</th>
 	</thead>
 	<tbody>
 		<?php

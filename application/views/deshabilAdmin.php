@@ -12,9 +12,13 @@
 <table class="table">
 	<thead>
         <th>No.</th>
-        <th>Nombre</th>
+		<th>ciNit</th>
+		<th>Nombre</th>
+		<th>Primer Apellido</th>
+		<th>Segundo Apellido</th>
+        <th>Login</th>
         <th>Contraseña</th>
-        <th>Cargo</th>
+        <th>Turno</th>
 	</thead>
 	<tbody>
 		<?php
@@ -24,6 +28,10 @@
 		?>
 		<tr>
             <td><?php echo $contador; ?></td>
+			<td><?php echo $row->ciNit; ?></td>
+			<td><?php echo $row->nombre; ?></td>
+			<td><?php echo $row->primerApellido; ?></td>
+			<td><?php echo $row->segundoApellido; ?></td>
             <td><?php echo $row->login; ?></td>
             <td><?php echo $row->codigo; ?></td>
             <td><?php echo $row->cargo; ?></td>

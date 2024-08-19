@@ -9,14 +9,14 @@
 
 <table class="table">
 	<thead>
-        <th>No.</th>
-        <th>Nombre</th>
-        <th>primerApellido</th>
-        <th>segundoApellido</th>
-        <th>licencia</th>
-        <th>Teléfono</th>
-        <th>domicilio</th>
-        <th>antecedentes</th>
+                <th>No.</th>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Licencia</th>
+                <th>Teléfono</th>
+                <th>Domicilio</th>
+                <th>Antecedentes</th>
 	</thead>
 	<tbody>
 		<?php

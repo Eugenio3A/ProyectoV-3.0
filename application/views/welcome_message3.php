@@ -86,9 +86,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <table border="1">
 	<thead>
         <th>No.</th>
-        <th>Nombre</th>
+		<th>CiNit</th>
+		<th>Nombre</th>
+		<th>Primer Apellido</th>
+		<th>Segundo Apellido</th>
+        <th>Login</th>
         <th>Contraseña</th>
-        <th>cargo</th>
+        <th>Turno</th>
 	</thead>
 	<tbody>
 		<?php
@@ -98,6 +102,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		?>
 		<tr>
             <td><?php echo $contador; ?></td>
+			<td><?php echo $row->ciNit; ?></td>
+			<td><?php echo $row->nombre; ?></td>
+			<td><?php echo $row->primerApellido; ?></td>
+			<td><?php echo $row->segundoApellido; ?></td>
             <td><?php echo $row->login; ?></td>
             <td><?php echo $row->codigo; ?></td>
             <td><?php echo $row->cargo; ?></td>
@@ -109,18 +117,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</tbody>
 </table>
 </div>
-
-
-idAdmin INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  login VARCHAR(255) NOT NULL DEFAULT '',
-  codigo VARCHAR(255) NOT NULL DEFAULT '',
-  tipo VARCHAR(255) NOT NULL DEFAULT '',
-  activo BOOLEAN DEFAULT TRUE,
-  fechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  fechaActualizacion TIMESTAMP,
-  id_usuario SMALLINT,
-
-
 
 	<h1>Welcome to CodeIgniter!!!</h1>
 	<h1>Ruta base:</h1>

@@ -84,5 +84,33 @@ class Welcome extends CI_Controller {
 		$this->load->view('inc/pie');
 
 	}
+
+
+	public function indexV()
+	{
+		$listaV=$this->veiculo_model->listaveiculo();
+		$data['moviles']=$listaV;
+		$this->load->view('welcome_veiculo',$data);
+	}
+
+	public function pruebabdV()
+	{
+		$query=$this->db->get('Vehiculos');
+		$execonsulta=$query->result();
+		print_r($execonsulta);
+	}
+	
+	public function empresa()
+	{
+		$listaV=$this->veiculo_model->listaveiculo();
+		$data ['moviles']=$listaV;
+
+		$this->load->view('inc/head');
+		$this->load->view('inc/menu');
+		$this->load->view('welcome_veiculo',$data);
+		$this->load->view('inc/footer');
+		$this->load->view('inc/pie');
+
+	}
 	
 }

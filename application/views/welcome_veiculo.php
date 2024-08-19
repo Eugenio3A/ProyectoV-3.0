@@ -80,35 +80,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 
-	<h1>LISTA DE CONDUCTORES</h1>
+	<h1>LISTA DE VEICULO</h1>
 
 <div align="center">
 <table border="1">
 	<thead>
-	    <th>No.</th>
-        <th>Nombre</th>
-        <th>Primer Apellido</th>
-        <th>Segundo Apellido</th>
-        <th>Licencia</th>
-        <th>Teléfono</th>
-        <th>Domicilio</th>
-        <th>Antecedentes</th>             
+		<th>No.</th>
+        <th>No.Movil</th>
+		<th>Modelo</th>
+		<th>Marca</th>
+		<th>Placa</th>
+		<th>Tipo</th>
 	</thead>
 	<tbody>
 		<?php
 		$contador=1;
-		foreach($alumnos->result() as $row)
+		foreach($moviles->result() as $row)
 		{
 		?>
 		<tr>
-            <td><?php echo $contador; ?></td>
-            <td><?php echo $row->nombre; ?></td>
-            <td><?php echo $row->primerApellido; ?></td>
-            <td><?php echo $row->segundoApellido; ?></td>
-            <td><?php echo $row->licencia; ?></td>
-            <td><?php echo $row->telefono; ?></td>
-            <td><?php echo $row->direccion; ?></td>
-            <td><?php echo $row->antecedentes; ?></td>
+			<td><?php echo $contador; ?></td>
+			<td><?php echo $row->numMovil; ?></td>
+			<td><?php echo $row->modelo; ?></td>
+			<td><?php echo $row->marca; ?></td>
+			<td><?php echo $row->placa; ?></td>
+            <td><?php echo $row->tipo; ?></td>
 		</tr>
 		<?php
 		$contador++;
@@ -117,9 +113,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</tbody>
 </table>
 </div>
-
-
-
 
 	<h1>Welcome to CodeIgniter!!!</h1>
 	<h1>Ruta base:</h1>

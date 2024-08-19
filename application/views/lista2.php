@@ -109,12 +109,12 @@
                 <tr>
                     <th>No.</th>
                     <th>Nombre</th>
-                    <th>primerApellido</th>
-                    <th>segundoApellido</th>
-                    <th>licencia</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Licencia</th>
                     <th>Teléfono</th>
-                    <th>domicilio</th>
-                    <th>antecedentes</th>
+                    <th>Domicilio</th>
+                    <th>Antecedentes</th>
                     <th>Creado</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
