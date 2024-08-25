@@ -108,6 +108,7 @@
             <thead>
                 <tr>
                     <th>No.</th>
+                    <th>Foto</th>
                     <th>Nombre</th>
                     <th>Primer Apellido</th>
                     <th>Segundo Apellido</th>
@@ -128,6 +129,24 @@
                 ?>
                 <tr>
                     <td><?php echo $contador; ?></td>
+                    <td>
+                        <?php 
+                         $foto=$row->foto;
+                         if($foto=="")
+                         {
+                            ?>
+                 <img src="<?php echo base_url(); ?>/uploads/conductor/perfil.jpg" width="50">  
+                            <?php
+                         }
+                         else
+                         {
+                           
+                            ?>
+                 <img src="<?php echo base_url(); ?>/uploads/conductor/<?php echo $foto; ?>" width="50">  
+                            <?php
+                         }
+                        ?>
+                    </td>
                     <td><?php echo $row->nombre; ?></td>
                     <td><?php echo $row->primerApellido; ?></td>
                     <td><?php echo $row->segundoApellido; ?></td>

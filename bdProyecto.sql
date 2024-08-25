@@ -48,7 +48,7 @@ CREATE TABLE `administrador` (
 
 LOCK TABLES `administrador` WRITE;
 /*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
-INSERT INTO `administrador` VALUES (1,'','','','','juan','f5737d25829e95b9c234b7fa06af8736','administrador',1,'2024-08-18 02:15:59',NULL,NULL),(2,'','','','','mario','aeb34368c5d53aee32431b5386f71c56','administrador',1,'2024-08-18 02:16:12',NULL,NULL),(3,'','','','','daniel','b5ea8985533defbf1d08d5ed2ac8fe9b','administrador',1,'2024-08-18 02:16:28',NULL,NULL);
+INSERT INTO `administrador` VALUES (1,'2546213','Juan','martines','perez','juan','f5737d25829e95b9c234b7fa06af8736','mañana',0,'2024-08-22 05:28:52',NULL,NULL),(2,'2455886','Daniel','PERES','MENDES','DANIEL','b5ea8985533defbf1d08d5ed2ac8fe9b','TARDE',1,'2024-08-22 05:29:49',NULL,NULL),(3,'8456766','Pedro','castro','Mendes','pedro','d3ce9efea6244baa7bf718f12dd0c331','noche',1,'2024-08-22 05:36:18',NULL,NULL);
 /*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,12 +73,13 @@ CREATE TABLE `conductores` (
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
   `idUsuario` smallint NOT NULL,
   `id_vehiculo` smallint DEFAULT NULL,
+  `foto` varchar(45) NOT NULL,
   PRIMARY KEY (`id_conductor`),
   UNIQUE KEY `licencia` (`licencia`),
   UNIQUE KEY `id_vehiculo` (`id_vehiculo`),
   KEY `idx_conductores_licencia` (`licencia`),
   CONSTRAINT `conductores_ibfk_1` FOREIGN KEY (`id_vehiculo`) REFERENCES `vehiculos` (`id_vehiculo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +88,7 @@ CREATE TABLE `conductores` (
 
 LOCK TABLES `conductores` WRITE;
 /*!40000 ALTER TABLE `conductores` DISABLE KEYS */;
-INSERT INTO `conductores` VALUES (1,'PEDRO','MAMANI','JUAREZ','4526852','63582459','av. Melchor Urquide 1234 ','sin antesedentes',1,'2024-08-18 02:12:47',NULL,0,NULL),(2,'NOEL','BALDES','JUAREZ','12546332','65862237','call. merida 1220','sin antesedentes',1,'2024-08-18 02:13:43',NULL,0,NULL),(5,'PEDRO','MARTINES','DORADO','4511111','75846921','av.blanco galindo Km7','sin antesedentes',1,'2024-08-18 02:15:28',NULL,0,NULL);
+INSERT INTO `conductores` VALUES (1,'PEDRO','MAMANI','MENDES','241535','6586223','av.blanco galindo Km7',NULL,1,'2024-08-22 05:26:00',NULL,0,NULL,'2.jpg');
 /*!40000 ALTER TABLE `conductores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +223,7 @@ CREATE TABLE `puestosparqueo` (
   `idPuesto` smallint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL DEFAULT '',
   `descripcion` varchar(250) NOT NULL,
-  `estado` tinyint(1) DEFAULT '0',
+  `estado` tinyint(1) DEFAULT '1',
   `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
   `idUsuario` smallint NOT NULL,
@@ -364,7 +365,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'MARIO','MMANI','6586223','CALL.AMIRAYA Y HEROINAS',1,NULL,'2024-08-18 02:17:23',NULL,0),(2,'DANIEL','MORALES','65862220','CALL.AMIRAYA Y HEROINAS',1,NULL,'2024-08-18 02:17:49',NULL,0);
+INSERT INTO `usuarios` VALUES (1,'JUAN','MORALES','6586223','CALL. LA PAZ Y AV. AYACUCHO',1,NULL,'2024-08-22 05:31:34',NULL,0),(2,'MARIO','MMANI','6586223','AV.BLANCO GALINDO ',1,NULL,'2024-08-22 05:34:51',NULL,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -382,12 +383,13 @@ CREATE TABLE `vehiculos` (
   `marca` varchar(100) NOT NULL,
   `placa` varchar(20) NOT NULL,
   `tipo` enum('taxi','vagoneta','taxi_familiar','mudanza') NOT NULL,
-  `estado` tinyint(1) DEFAULT '0',
+  `estado` tinyint(1) DEFAULT '1',
   `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
   `idUsuario` smallint NOT NULL,
   `idPuesto` smallint DEFAULT NULL,
   `id_propietario` smallint DEFAULT NULL,
+  `foto` varchar(45) NOT NULL,
   PRIMARY KEY (`id_vehiculo`),
   UNIQUE KEY `placa` (`placa`),
   KEY `idPuesto` (`idPuesto`),
@@ -395,7 +397,7 @@ CREATE TABLE `vehiculos` (
   KEY `idx_vehiculos_placa` (`placa`),
   CONSTRAINT `vehiculos_ibfk_1` FOREIGN KEY (`idPuesto`) REFERENCES `puestosparqueo` (`idPuesto`),
   CONSTRAINT `vehiculos_ibfk_2` FOREIGN KEY (`id_propietario`) REFERENCES `propietarios` (`id_propietario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -404,6 +406,7 @@ CREATE TABLE `vehiculos` (
 
 LOCK TABLES `vehiculos` WRITE;
 /*!40000 ALTER TABLE `vehiculos` DISABLE KEYS */;
+INSERT INTO `vehiculos` VALUES (1,'45','1899','TOYOTA','4582DER','vagoneta',1,'2024-08-22 05:30:35',NULL,0,NULL,NULL,'1.jpg'),(2,'25','9996','NISSAN','2451KAL','taxi',1,'2024-08-22 05:30:54',NULL,0,NULL,NULL,''),(3,'34','1999','TOYOTA','3345GFH','vagoneta',1,'2024-08-23 06:41:58',NULL,0,NULL,NULL,'');
 /*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -416,4 +419,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-17 22:30:03
+-- Dump completed on 2024-08-23  3:28:54

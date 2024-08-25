@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Veiculo extends CI_Controller {
+class Vehiculo extends CI_Controller {
 
     // Constructor para cargar el modelo
     public function __construct()
@@ -18,35 +18,33 @@ class Veiculo extends CI_Controller {
 		$this->load->view('inc/vistaslte/footer');
 	}
 
-	public function empresa()
+	public function curso()
 	{
 		if($this->session->userdata('login'))
 		{
 			$listaV=$this->veiculo_model->listaveiculo();
-			$data ['moviles']=$listaV;
+			$data ['taxis']=$listaV;
 
 			$this->load->view('inc/head');
-			$this->load->view('inc/menu');
+			$this->load->view('inc/menuGt');
 			$this->load->view('listaV',$data);
 			$this->load->view('inc/footer');
 			$this->load->view('inc/pie');		
 		}
 		else
 		{
-			redirect('veiculo/index','refresh');
+			redirect('gerenteprop/index', 'refresh');
 		}
-
-
 		
 	}
 
 	public function deshabilitados()
 	{
 		$listaV=$this->veiculo_model->listadeshabilitados();
-		$data['moviles']=$listaV;
+		$data['taxis']=$listaV;
 
 		$this->load->view('inc/head');
-		$this->load->view('inc/menu');
+		$this->load->view('inc/menuGt');
 		$this->load->view('deshabilVeiculo',$data);
 		$this->load->view('inc/footer');
 		$this->load->view('inc/pie');
@@ -55,7 +53,7 @@ class Veiculo extends CI_Controller {
 	public function agregar()
 	{
 		$this->load->view('inc/head');
-		$this->load->view('inc/menu');
+		$this->load->view('inc/menuGt');
 		$this->load->view('formVeiculo');
 		$this->load->view('inc/footer');
 		$this->load->view('inc/pie');
@@ -63,6 +61,7 @@ class Veiculo extends CI_Controller {
 
 	public function agregarbd()
 	{
+		$data['foto']=($_POST['foto']);
 		$data['numMovil']=strtoupper($_POST['numMovil']);
 		$data['modelo']=strtoupper($_POST['modelo']);
 		$data['marca']=strtoupper($_POST['marca']);
@@ -70,14 +69,14 @@ class Veiculo extends CI_Controller {
         $data['tipo']=strtoupper($_POST['tipo']);
 
 		$this->veiculo_model->agregarveiculo($data);
-		redirect('veiculo/empresa','refresh');
+		redirect('vehiculo/curso','refresh');
 	}
 
 	public function eliminarbd()
 	{
 		$id_vehiculo=$_POST['id_vehiculo'];
 		$this->veiculo_model->eliminarveiculo($id_vehiculo);
-		redirect('veiculo/empresa','refresh');
+		redirect('vehiculo/curso','refresh');
 	}
 
 	public function modificar()
@@ -86,15 +85,17 @@ class Veiculo extends CI_Controller {
 		$data['infoveiculo']=$this->veiculo_model->recuperarveiculo($id_vehiculo);
 
 		$this->load->view('inc/head');
-		$this->load->view('inc/menu');
+		$this->load->view('inc/menuGt');
 		$this->load->view('formmodVeiculo',$data);
 		$this->load->view('inc/footer');
 		$this->load->view('inc/pie');
 	}
 
+	
 	public function modificarbd()
 	{
 		$id_vehiculo=$_POST['id_vehiculo'];
+		$data['foto']=($_POST['foto']);
         $data['numMovil']=strtoupper($_POST['numMovil']);
 		$data['modelo']=strtoupper($_POST['modelo']);
 		$data['marca']=strtoupper($_POST['marca']);
@@ -102,16 +103,17 @@ class Veiculo extends CI_Controller {
         $data['tipo']=strtoupper($_POST['tipo']);
 
 		$this->veiculo_model->modificarveiculo($id_vehiculo,$data);
-		redirect('veiculo/empresa','refresh');
+		redirect('vehiculo/curso','refresh');
 	}
 
+	
 	public function deshabilitarbd()
 	{
 		$id_vehiculo=$_POST['id_vehiculo'];
 		$data['estado']='0';
 
 		$this->veiculo_model->modificarveiculo($id_vehiculo,$data);
-		redirect('veiculo/empresa','refresh');
+		redirect('vehiculo/curso','refresh');
 	}
 
 	public function habilitarbd()
@@ -120,7 +122,7 @@ class Veiculo extends CI_Controller {
 		$data['estado']='1';
 
 		$this->veiculo_model->modificarveiculo($id_vehiculo,$data);
-		redirect('veiculo/deshabilitados','refresh');
+		redirect('vehiculo/deshabilitados','refresh');
 	}
 
 }

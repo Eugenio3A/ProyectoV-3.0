@@ -44,3 +44,5 @@ class Veiculo_model extends CI_Model {
 		$this->db->update('Vehiculos',$data);
 	}
 }
+
+

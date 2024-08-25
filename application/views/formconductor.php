@@ -13,6 +13,8 @@ echo form_open_multipart("conductor/agregarbd2");
 <input type="number" min="1000000" max="99999999" class="form-control" name="telefono" placeholder="Escribe telefono" required>
 <input type="text" class="form-control" name="domicilio" placeholder="Escribe direccion de domicilio" required>
 <input type="text" class="form-control" name="antecedentes" placeholder="Escribe antecedentes" required>
+<input type="text" class="form-control" name="foto" placeholder="Inserte foto del conductor">
+
 <button type="submit" class="btn btn-success">Agregar Conductor</button>
 
 <?php

@@ -26,7 +26,7 @@ class Conductor extends CI_Controller {
             $data['alumnos'] = $lista2;
 
             $this->load->view('inc/head');
-            $this->load->view('inc/menucond');
+            $this->load->view('inc/menuGt');
             $this->load->view('lista2', $data);
             $this->load->view('inc/footer');
             $this->load->view('inc/pie');        
@@ -43,7 +43,7 @@ class Conductor extends CI_Controller {
         $data['alumnos'] = $lista2;
 
         $this->load->view('inc/head');
-        $this->load->view('inc/menucond');
+        $this->load->view('inc/menuGt');
         $this->load->view('deshabilconduc', $data);
         $this->load->view('inc/footer');
         $this->load->view('inc/pie');
@@ -52,7 +52,7 @@ class Conductor extends CI_Controller {
     public function agregar()
     {
         $this->load->view('inc/head');
-        $this->load->view('inc/menucond');
+        $this->load->view('inc/menuGt');
         $this->load->view('formconductor');
         $this->load->view('inc/footer');
         $this->load->view('inc/pie');
@@ -67,6 +67,7 @@ class Conductor extends CI_Controller {
         $data['telefono'] = $_POST['telefono'];
         $data['domicilio'] = $_POST['domicilio'];
         $data['antecedentes'] = $_POST['antecedentes'];
+        $data['foto'] = $_POST['foto'];
 
         $this->conductor_model->agregarconductores($data);
         redirect('conductor/curso', 'refresh');
@@ -85,7 +86,7 @@ class Conductor extends CI_Controller {
         $data['infoconductor'] = $this->conductor_model->recuperarconductores($id_conductor);
 
         $this->load->view('inc/head');
-        $this->load->view('inc/menucond');
+        $this->load->view('inc/menuGt');
         $this->load->view('formmodicond', $data);
         $this->load->view('inc/footer');
         $this->load->view('inc/pie');
@@ -101,6 +102,7 @@ class Conductor extends CI_Controller {
         $data['telefono'] = $_POST['telefono'];
         $data['domicilio'] = $_POST['domicilio'];
         $data['antecedentes'] = $_POST['antecedentes'];
+        $data['foto'] = $_POST['foto'];
 
         $this->conductor_model->modificarconductores($id_conductor, $data);
         redirect('conductor/curso', 'refresh');

@@ -10,6 +10,7 @@
 <table class="table">
 	<thead>
                 <th>No.</th>
+                <th>Foto</th>
                 <th>Nombre</th>
                 <th>Primer Apellido</th>
                 <th>Segundo Apellido</th>
@@ -26,6 +27,7 @@
 		?>
 		<tr>
             <td><?php echo $contador; ?></td>
+            <td><?php echo $row->foto; ?></td>
             <td><?php echo $row->nombre; ?></td>
             <td><?php echo $row->primerApellido; ?></td>
             <td><?php echo $row->segundoApellido; ?></td>

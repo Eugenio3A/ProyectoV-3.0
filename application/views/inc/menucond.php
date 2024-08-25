@@ -21,13 +21,13 @@
           <a class="nav-link active text-light" aria-current="page" href="<?php echo base_url(); ?>index.php/conductor/curso">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/empresa/catalogo">Insertar Conductor</a>
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/conductor/curso">Insertar Conductor</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/administrador/curso">Insertar Administrador</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/veiculo/empresa">Insertar Veiculo</a>
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/vehiculo/curso">Insertar Veiculo</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/empresa/catalogo">Reportes</a>

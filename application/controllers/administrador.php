@@ -26,7 +26,7 @@ class Administrador extends CI_Controller {
             $data['alumnos'] = $lista3;
 
             $this->load->view('inc/head');
-            $this->load->view('inc/menu');
+            $this->load->view('inc/menuGt');
             $this->load->view('lista3', $data);
             $this->load->view('inc/footer');
             $this->load->view('inc/pie');        
@@ -43,7 +43,7 @@ class Administrador extends CI_Controller {
         $data['alumnos'] = $lista3;
 
         $this->load->view('inc/head');
-        $this->load->view('inc/menu');
+        $this->load->view('inc/menuGt');
         $this->load->view('deshabilAdmin', $data);
         $this->load->view('inc/footer');
         $this->load->view('inc/pie');
@@ -52,7 +52,7 @@ class Administrador extends CI_Controller {
     public function agregar()
     {
         $this->load->view('inc/head');
-        $this->load->view('inc/menu');
+        $this->load->view('inc/menuGt');
         $this->load->view('formAdmin');
         $this->load->view('inc/footer');
         $this->load->view('inc/pie');
@@ -67,6 +67,7 @@ class Administrador extends CI_Controller {
         $data['login'] = ($_POST['login']);
         $data['codigo']=md5($_POST['codigo']);
         $data['cargo'] = ($_POST['cargo']);
+        
         $this->admin_model->agregarconductores($data);
         redirect('administrador/curso', 'refresh');
     }
@@ -84,7 +85,7 @@ class Administrador extends CI_Controller {
         $data['infoconductor'] = $this->admin_model->recuperarconductores($idAdmin);
 
         $this->load->view('inc/head');
-        $this->load->view('inc/menu');
+        $this->load->view('inc/menuGt');
         $this->load->view('formmodAdmin', $data);
         $this->load->view('inc/footer');
         $this->load->view('inc/pie');
@@ -93,13 +94,13 @@ class Administrador extends CI_Controller {
     public function modificarbd()
     {
         $idAdmin = $_POST['idAdmin'];
-        $data['ciNit'] = strtoupper($_POST['ciNit']);
-        $data['nombre'] = strtoupper($_POST['nombre']);
-        $data['primerApellido'] = strtoupper($_POST['primerApellido']);
-        $data['segundoApellido'] = strtoupper($_POST['segundoApellido']);
-        $data['login'] = strtoupper($_POST['login']);
-        $data['codigo'] = strtoupper($_POST['codigo']);
-        $data['cargo'] = strtoupper($_POST['cargo']);
+        $data['ciNit'] = ($_POST['ciNit']);
+        $data['nombre'] = ($_POST['nombre']);
+        $data['primerApellido'] = ($_POST['primerApellido']);
+        $data['segundoApellido'] = ($_POST['segundoApellido']);
+        $data['login'] = ($_POST['login']);
+        $data['codigo'] = md5($_POST['codigo']);
+        $data['cargo'] = ($_POST['cargo']);
 
         $this->admin_model->modificarconductores($idAdmin, $data);
         redirect('administrador/curso', 'refresh');

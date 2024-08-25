@@ -94,20 +94,21 @@
 
         <h2>Bienvenido <?php echo $this->session->userdata('login'); ?></h2>
 
-        <p><?php echo date('Y/m/d H:i:s'); ?></p>
+        <p><?php echo date ('Y/m/d H:i:s'); ?></p>
 
-        <a href="<?php echo base_url(); ?>index.php/veiculo/deshabilitados">
+        <a href="<?php echo base_url(); ?>index.php/vehiculo/deshabilitados">
             <button type="button" class="btn btn-warning">VEICULO NO FUNCIONALES</button>
         </a>
 
-        <a href="<?php echo base_url(); ?>index.php/veiculo/agregar">
-            <button type="button" class="btn btn-primary">AGREGAR VEICULO</button>
+        <a href="<?php echo base_url(); ?>index.php/vehiculo/agregar">
+            <button type="button" class="btn btn-primary">AGREGAR VEHICULO</button>
         </a>
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>No.</th>
+                    <th>Foto</th>
                     <th>No.Movil</th>
 		            <th>Modelo</th>
                     <th>Marca</th>
@@ -122,10 +123,29 @@
             <tbody>
                 <?php
                 $contador = 1;
-                foreach ($moviles->result() as $row) {
+                foreach ($taxis->result() as $row)
+                {
                 ?>
                 <tr>
                     <td><?php echo $contador; ?></td>
+                    <td>
+                        <?php 
+                         $foto=$row->foto;
+                         if($foto=="")
+                         {
+                            ?>
+                 <img src="<?php echo base_url(); ?>/uploads/vehiculo/perfil.jpg" width="50">  
+                            <?php
+                         }
+                         else
+                         {
+                           
+                            ?>
+                 <img src="<?php echo base_url(); ?>/uploads/vehiculo/<?php echo $foto; ?>" width="50">  
+                            <?php
+                         }
+                        ?>
+                    </td>
 			        <td><?php echo $row->numMovil; ?></td>
 			        <td><?php echo $row->modelo; ?></td>
 			        <td><?php echo $row->marca; ?></td>
@@ -133,19 +153,19 @@
                     <td><?php echo $row->tipo; ?></td>
                     <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                     <td>
-                        <?php echo form_open_multipart("veiculo/modificar"); ?>
+                        <?php echo form_open_multipart("vehiculo/modificar"); ?>
                         <input type="hidden" name="id_vehiculo" value="<?php echo $row->id_vehiculo; ?>">
                         <button type="submit" class="btn btn-success">Modificar</button>
                         <?php echo form_close(); ?>
                     </td>
                     <td>
-                        <?php echo form_open_multipart("veiculo/eliminarbd"); ?>
+                        <?php echo form_open_multipart("vehiculo/eliminarbd"); ?>
                         <input type="hidden" name="id_vehiculo" value="<?php echo $row->id_vehiculo; ?>">
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                         <?php echo form_close(); ?>
                     </td>
                     <td>
-                        <?php echo form_open_multipart("veiculo/deshabilitarbd"); ?>
+                        <?php echo form_open_multipart("vehiculo/deshabilitarbd"); ?>
                         <input type="hidden" name="id_vehiculo" value="<?php echo $row->id_vehiculo; ?>">
                         <button type="submit" class="btn btn-warning">Deshabilitar</button>
                         <?php echo form_close(); ?>
@@ -160,5 +180,3 @@
     </div>
 </body>
 </html>
-
-
