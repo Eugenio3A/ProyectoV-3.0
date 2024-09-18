@@ -11,7 +11,10 @@
 	<thead>
 		<th>No.</th>
 		<th>Nombre</th>
-		<th>Familia</th>
+		<th>Primer Apellido</th>
+		<th>Segundo Apellido</th>
+		<th>Email</th>
+		<th>Contraseña</th>
 		<th>Direccion</th>
 		<th>Telefono</th>
 	</thead>
@@ -24,7 +27,11 @@
 		<tr>
 			<td><?php echo $contador; ?></td>
 			<td><?php echo $row->nombre; ?></td>
-			<td><?php echo $row->familia; ?></td>
+			<td><?php echo $row->primerApellido; ?></td>
+			<td><?php echo $row->segundoApellido; ?></td>
+			<td><?php echo $row->cuenta; ?></td>
+			<td><?php echo $row->contrasenia; ?></td>
+			<td><?php echo $row->telefono; ?></td>
 			<td><?php echo $row->direccion; ?></td>
 			<td>
 <?php

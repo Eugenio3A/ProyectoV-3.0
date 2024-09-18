@@ -17,17 +17,26 @@
   <div class="collapse" id="sidebarMenu">
     <div class="bg-dark p-4">
       <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="<?php echo base_url(); ?>index.php/estudiante/curso">Inicio</a>
+      <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="<?php echo base_url(); ?>index.php/conductor/curso">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/conductor/curso">rConductor</a>
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/conductor/curso">Insertar Conductor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/administrador/curso">Insertar Administrador</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/vehiculo/curso">Insertar Veiculo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/empresa/catalogo">Reportes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/empresa/contactos">Reclamos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/empresa/contactos">Reservas</a>
+          <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/Reservas/curso">Reservas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="<?php echo base_url(); ?>index.php/empresa/contactos">Pagos</a>

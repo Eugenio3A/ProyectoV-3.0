@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios extends CI_Controller {
+class ConductorLogin extends CI_Controller {
 
 	// Constructor para cargar el modelo
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('usuario_model'); // Carga el modelo conductor_model
+        $this->load->model('conducLog_model'); // Carga el modelo conductor_model
     }
 
 	public function index()
 	{
 		$this->load->view('inc/head');
-		$this->load->view('logformUsuario');
+		$this->load->view('logFormConductor');
 		$this->load->view('inc/pie');
 		
 	}
@@ -25,7 +25,7 @@ class Usuarios extends CI_Controller {
 
 		echo $login;
 		echo $password;
-		$consulta=$this->usuario_model->validar($login,$password);
+		$consulta=$this->conducLog_model->validar($login,$password);
 
 		echo $consulta->num_rows();
 
@@ -36,18 +36,18 @@ class Usuarios extends CI_Controller {
 			foreach($consulta->result() as $row)
 			{
 
-				$this->session->set_userdata('id_usuario',$row->id_usuario);
+				$this->session->set_userdata('id_conductor',$row->id_conductor);
 				$this->session->set_userdata('cuenta',$row->cuenta);
 				$this->session->set_userdata('tipo',$row->tipo);
-				$this->session->set_userdata('activo',$row->activo);
+				$this->session->set_userdata('disponible',$row->disponible);
 
-				redirect('usuarios/panel','refresh');
+				redirect('conductorLogin/panel','refresh');
 			}
 		}
 		else
 		{
 			//acceso incorrecto - volvemos al login
-			redirect('usuarios/index','refresh');
+			redirect('conductorLogin/index','refresh');
 		}
 	}
 
@@ -59,14 +59,14 @@ class Usuarios extends CI_Controller {
 		}
 		else
 		{
-			redirect('usuarios/index','refresh');
+			redirect('conductorLogin/index','refresh');
 		}
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('usuarios/index','refresh');
+		redirect('conductorLogin/index','refresh');
 	}
 
 }

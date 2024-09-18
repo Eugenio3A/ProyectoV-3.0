@@ -84,7 +84,7 @@
 <body>
     <div class="header">
         <img src="<?php echo base_url(); ?>img/taxi-amarillo.jpg" alt="Logo"> <!-- Ruta a tu imagen -->
-        <h1>LISTA DE USUARIOS</h1>
+        <h1>LISTA DE RESERVAS</h1>
     </div>
 
     <div class="container">
@@ -103,7 +103,7 @@
       <?php echo form_close(); ?>
 
 
-        <h2>Bienvenido <?php echo $this->session->userdata('cuenta'); ?></h2>
+        <h2>Bienvenido <?php echo $this->session->userdata('login'); ?></h2>
 
         <p><?php echo date ('Y/m/d H:i:s'); ?></p>
 
@@ -120,10 +120,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Nombre</th>
-                    <th>primerApellido</th>
-                    <th>segundoApellido</th>
-                    <th>Email</th>
-                    <th>Contraseña</th>
+                    <th>Familia</th>
                     <th>Dirección</th>
                     <th>Teléfono</th>
                     <th>Creado</th>
@@ -139,16 +136,13 @@
                 ?>
                 <tr>
                     <td><?php echo $contador; ?></td>
-                    <td><?php echo $row->nombre; ?></td>
-                    <td><?php echo $row->primerApellido; ?></td>
-                    <td><?php echo $row->segundoApellido; ?></td>
-                    <td><?php echo $row->email; ?></td>
-                    <td><?php echo $row->contrasenia; ?></td>
-                    <td><?php echo $row->familia; ?></td>
-                    <td><?php echo $row->direccion; ?></td>
-                    <td><?php echo $row->telefono; ?></td>
-                    <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
+                    <td><?php echo $row->fechaServicio; ?></td>
+                    <td><?php echo $row->origen; ?></td>
+                    <td><?php echo $row->destino; ?></td>
+                    <td><?php echo $row->precio; ?></td>
+                    <td><?php echo formatearFecha($row->fechaReserva); ?></td>
                     <td>
+
                         <?php echo form_open_multipart("estudiante/modificar"); ?>
                         <input type="hidden" name="id_usuario" value="<?php echo $row->id_usuario; ?>">
                         <button type="submit" class="btn btn-success">Modificar</button>

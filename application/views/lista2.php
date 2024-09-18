@@ -116,6 +116,8 @@
                     <th>Teléfono</th>
                     <th>Domicilio</th>
                     <th>Antecedentes</th>
+                    <th>Cuenta Email</th>
+                    <th>Contraseña</th>
                     <th>Creado</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
@@ -154,6 +156,8 @@
                     <td><?php echo $row->telefono; ?></td>
                     <td><?php echo $row->domicilio; ?></td>
                     <td><?php echo $row->antecedentes; ?></td>
+                    <td><?php echo $row->cuenta; ?></td>
+                    <td><?php echo $row->contrasenia; ?></td>
                     <td><?php echo formatearFecha($row->fecha_registro); ?></td>
                     <td>
                         <?php echo form_open_multipart("conductor/modificar"); ?>

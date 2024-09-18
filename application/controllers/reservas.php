@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Estudiante extends CI_Controller {
+class Reservas extends CI_Controller {
 
 	public function demo(){
 		$this->load->view('inc/vistaslte/head');
@@ -14,20 +14,22 @@ class Estudiante extends CI_Controller {
 	{
 		if($this->session->userdata('login'))
 		{
-			$lista=$this->estudiante_model->listaestudiantes();
-			$data ['alumnos']=$lista;
+			$listaRes=$this->Resevas_model->listaestudiantes();
+			$data ['alumnos']=$listaRes;
 
 			$this->load->view('inc/head');
-			$this->load->view('inc/menu');
-			$this->load->view('lista',$data);
+			$this->load->view('inc/menuGt');
+			$this->load->view('$listaRes',$data);
 			$this->load->view('inc/footer');
-			$this->load->view('inc/test');		
+			$this->load->view('inc/pie');		
 		}
 		else
 		{
 			redirect('usuarios/index','refresh');
 		}
 
+
+		
 	}
 
 	public function inscribir()
@@ -50,14 +52,14 @@ class Estudiante extends CI_Controller {
 
 	public function inscribirbd()
 	{
-		$data['nombre']=strtoupper($_POST['nombre']);
-		$data['familia']=strtoupper($_POST['familia']);
-		$data['direccion']=strtoupper($_POST['direccion']);
-		$data['telefono']=$_POST['telefono'];
+		$data['fechaServicio']=strtoupper($_POST['fechaServicio']);
+		$data['origen']=strtoupper($_POST['origen']);
+		$data['destino']=strtoupper($_POST['destino']);
+		$data['precio']=$_POST['precio'];
 		$id_vehiculo=$_POST['id_vehiculo'];
 
 		$this->carrera_model->inscribirestudiante($id_vehiculo,$data);
-		redirect('estudiante/curso','refresh');
+		redirect('Reservas/curso','refresh');
 	}
 
 	public function guest()
@@ -72,8 +74,8 @@ class Estudiante extends CI_Controller {
 
 	public function deshabilitados()
 	{
-		$lista=$this->estudiante_model->listadeshabilitados();
-		$data['alumnos']=$lista;
+		$listaRes=$this->Resevas_model->listadeshabilitados();
+		$data['alumnos']=$listaRes;
 
 		$this->load->view('inc/head');
 		$this->load->view('inc/menu');
@@ -94,28 +96,25 @@ class Estudiante extends CI_Controller {
 	public function agregarbd()
 	{
 		$data['nombre']=strtoupper($_POST['nombre']);
-		$data['primerApellido']=strtoupper($_POST['primerApellido']);
-		$data['segundoApellido']=strtoupper($_POST['segundoApellido']);
-		$data['cuenta']=($_POST['cuenta']);
-		$data['contrasenia']=md5($_POST['contrasenia']);
+		$data['familia']=strtoupper($_POST['familia']);
 		$data['direccion']=strtoupper($_POST['direccion']);
 		$data['telefono']=$_POST['telefono'];
 
-		$this->estudiante_model->agregarestudiante($data);
-		redirect('estudiante/curso','refresh');
+		$this->Resevas_model->agregarestudiante($data);
+		redirect('Reservas/curso','refresh');
 	}
 
 	public function eliminarbd()
 	{
-		$id_usuario=$_POST['id_usuario'];
-		$this->estudiante_model->eliminarestudiante($id_usuario);
-		redirect('estudiante/curso','refresh');
+		$id_reserva=$_POST['id_reserva'];
+		$this->Resevas_model->eliminarestudiante($id_reserva);
+		redirect('Reservas/curso','refresh');
 	}
 
 	public function modificar()
 	{
-		$id_usuario=$_POST['id_usuario'];
-		$data['infoestudiante']=$this->estudiante_model->recuperarestudiante($id_usuario);
+		$id_reserva=$_POST['id_reserva'];
+		$data['infoestudiante']=$this->Resevas_model->recuperarestudiante($id_reserva);
 
 		$this->load->view('inc/head');
 		$this->load->view('inc/menu');
@@ -126,35 +125,32 @@ class Estudiante extends CI_Controller {
 
 	public function modificarbd()
 	{
-		$id_usuario=$_POST['id_usuario'];
+		$id_reserva=$_POST['id_reserva'];
 		$data['nombre']=strtoupper($_POST['nombre']);
-		$data['primerApellido']=strtoupper($_POST['primerApellido']);
-		$data['segundoApellido']=strtoupper($_POST['segundoApellido']);
-		$data['cuenta']=strtoupper($_POST['cuenta']);
-		$data['contrasenia']=md5($_POST['contrasenia']);
+		$data['familia']=strtoupper($_POST['familia']);
 		$data['direccion']=strtoupper($_POST['direccion']);
 		$data['telefono']=$_POST['telefono'];
 
-		$this->estudiante_model->modificarestudiante($id_usuario,$data);
-		redirect('estudiante/curso','refresh');
+		$this->Resevas_model->modificarestudiante($id_reserva,$data);
+		redirect('Reservas/curso','refresh');
 	}
 
 	public function deshabilitarbd()
 	{
-		$id_usuario=$_POST['id_usuario'];
-		$data['activo']='0';
+		$id_reserva=$_POST['id_reserva'];
+		$data['estado']='completada';
 
-		$this->estudiante_model->modificarestudiante($id_usuario,$data);
-		redirect('estudiante/curso','refresh');
+		$this->Resevas_model->modificarestudiante($id_reserva,$data);
+		redirect('Reservas/curso','refresh');
 	}
 
 	public function habilitarbd()
 	{
-		$id_usuario=$_POST['id_usuario'];
-		$data['activo']='1';
+		$id_reserva=$_POST['id_reserva'];
+		$data['estado']='pendiente';
 
-		$this->estudiante_model->modificarestudiante($id_usuario,$data);
-		redirect('estudiante/deshabilitados','refresh');
+		$this->Resevas_model->modificarestudiante($id_reserva,$data);
+		redirect('Reservas/deshabilitados','refresh');
 	}
 
 }

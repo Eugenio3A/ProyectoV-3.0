@@ -11,10 +11,15 @@ foreach($infoestudiante->result() as $row)
 echo form_open_multipart("estudiante/modificarbd");
 ?>
 <input type="hidden" name="id_usuario" value="<?php echo $row->id_usuario; ?>">
-<input type="text" class="form-control" name="nombre" placeholder="Escribe nombre" value="<?php echo $row->nombre; ?>" required>
-<input type="text" class="form-control" name="familia" placeholder="Escribe apellido de la familia" minlength="3" maxlength="20" value="<?php echo $row->familia; ?>" required>
-<input type="text" class="form-control" name="direccion" placeholder="Escribe dsu direccion" value="<?php echo $row->direccion; ?>" required>
-<input type="number" min="1000000" max="99999999" class="form-control" name="telefono" placeholder="Escribe su numero de telefono" value="<?php echo $row->telefono; ?>" required>
+<input type="text" class="form-control" name="nombre" placeholder="Escribe nombre" required>
+<input type="text" class="form-control" name="primerApellido" placeholder="Escribe Primer Apellido" minlength="3" maxlength="20" required>
+<input type="text" class="form-control" name="segundoApellido" placeholder="Escribe Segundo Apellido" minlength="3" maxlength="20" required>
+<input type="text" class="form-control" name="direccion" placeholder="Escribe direccion" required>
+<input type="number" min="1000000" max="99999999" class="form-control" name="telefono" placeholder="Escribe telefono" required>
+<button type="submit" class="btn btn-success">Agregar Usuario</button>
+<input type="text" class="form-control" name="cuenta" placeholder="Escribe Email" required>
+<input type="text" class="form-control" name="contrasenia" placeholder="Escribe Contraseña" required>
+
 <button type="submit" class="btn btn-success">Modificar Usuario</button>
 	
 <?php

@@ -1,58 +1,66 @@
-
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="<?php echo base_url(); ?>adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url(); ?>adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="<?php echo base_url(); ?>adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/jszip/jszip.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?php echo base_url();?>adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url();?>adminlte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url();?>adminlte/dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+<footer class="footer">
+					<div class="container-fluid">
+						<nav class="pull-left">
+							<ul class="nav">
+								<li class="nav-item">
+									<a class="nav-link" href="http://www.themekita.com">
+										ThemeKita
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">
+										Help
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="https://themewagon.com/license/#free-item">
+										Licenses
+									</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="copyright ml-auto">
+							2018, made with <i class="la la-heart heart text-danger"></i> by <a href="http://www.themekita.com">ThemeKita</a>
+						</div>				
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">									
+					<p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development</p>
+					<p>
+						<b>We'll let you know when it's done</b></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/core/popper.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/core/bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/chartist/chartist.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/chart-circle/circles.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/ready.min.js"></script>
+<script src="<?php echo base_url();?>aseetsHtml/assets/js/demo.js"></script>
 </html>
